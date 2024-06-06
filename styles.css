@@ -4,20 +4,30 @@
   padding: 0;
   box-sizing: border-box;
 }
-body, input, select, textarea, a, label {
+body,
+input,
+select,
+textarea,
+a,
+label {
   font-family: "Outfit", sans-serif;
   font-weight: 700;
   font-size: large;
   color: darkcyan;
+  line-height: 1.6;
 }
 body {
-  background-color: darkcyan;
+  background-color: rgb(255, 255, 255);
+  min-width: 320px;
 }
 
 /* HEADER */
 header {
   background-color: rgb(255, 255, 255);
   height: 80px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 header #navbar {
   display: flex;
@@ -47,29 +57,44 @@ header #navbar .nav-list .nav-item a:hover {
   color: #777;
   transition: 0.3s;
 }
+
 header #navbar .hamburger-menu {
-  display: none;
+  display: block;
+  cursor: pointer;
+}
+
+header #navbar .hamburger-menu div {
+  width: 25px;
+  height: 3px;
+  background-color: darkcyan;
+  margin: 5px 0;
+  transition: 0.4s;
 }
 
 /* MAIN */
 main {
   margin-top: 0rem;
 }
-main h1{
+main h1 {
   color: white;
 }
 main #banner {
   position: relative;
-  background-color: darkcyan;
+  background: linear-gradient(
+    to bottom right,
+    #006666,
+    #004c4c
+  ); /* Gradiente de fundo */
   background-size: cover;
   background-position: center;
   color: darkcyan;
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-width: 320px;
 }
-main #banner p{
+main #banner p {
   color: darkcyan;
 }
 main #banner .banner-content {
@@ -77,31 +102,45 @@ main #banner .banner-content {
   z-index: 1;
 }
 main #banner .banner-content .banner-content-title {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 44px;
   font-weight: 700;
   line-height: 60px;
   margin-bottom: 40px;
 }
 main #banner .banner-content .banner-content-subtitle {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
   max-width: 500px;
   margin-bottom: 38px;
-  background-color: #f7f7f7ab;
+  background-color: rgba(255, 255, 255, 0.8); /* Aumenta o contraste */
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
-  padding: 8px 24px;
+  padding: 16px 24px; /* Aumenta o padding para maior legibilidade */
+  color: #333; /* Certifique-se de que o texto tenha uma cor escura para bom contraste */
 }
-main #banner .banner-content .banner-content-btn {
+
+/* Botões */
+
+.btn-model,
+.main #banner .banner-content .banner-content-btn {
   background-color: darkcyan;
   color: white;
   font-size: 20px;
   font-weight: 500;
   border-radius: 5px;
-  padding: 8px 24px;
+  padding: 12px 24px; /* Aumenta o padding para um botão mais robusto */
   border: none;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-model:hover,
+.main #banner .banner-content .banner-content-btn:hover {
+  background-color: #005f5f; /* Cor de hover mais escura */
 }
 
 main #banner .login-banner {
@@ -111,6 +150,7 @@ main #banner .login-banner {
   border-radius: 15px;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
   max-width: 30%;
+  min-width: 300px; /* Largura mínima para o login banner */
 }
 main #banner .login-banner h2 {
   font-size: 24px;
@@ -124,12 +164,12 @@ main #banner .login-banner form label {
   margin-bottom: 0.5rem;
 }
 main #banner .login-banner form input {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
   text-decoration: none;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 main #banner .login-banner form button {
   background-color: darkcyan;
@@ -142,22 +182,28 @@ main #banner .login-banner form button {
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-#create-account-link{
+#create-account-link {
+  color: darkcyan;
   text-decoration: none;
+}
+
+#create-account-link:hover {
+  color: #005f5f;
+  transition: color 0.3s ease;
 }
 
 /* Modal Styles */
 .modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
 }
 
@@ -196,7 +242,7 @@ main #banner .login-banner form button {
 .modal-content form button {
   margin-bottom: 5px;
 }
-.input-modal{
+.input-modal {
   margin-bottom: 1rem;
   padding: 0.5rem;
   font-size: 16px;
@@ -204,7 +250,7 @@ main #banner .login-banner form button {
   border-radius: 5px;
   text-decoration: none;
 }
-.btn-model{
+.btn-model {
   background-color: darkcyan;
   color: white;
   font-size: 20px;
@@ -285,6 +331,12 @@ button[type="submit"]:hover {
   box-sizing: border-box;
 }
 
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
 .card h3 {
   margin-top: 0;
 }
@@ -297,7 +349,7 @@ button[type="submit"]:hover {
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -306,10 +358,14 @@ button[type="submit"]:hover {
 
 /* FOOTER */
 footer {
+  border-collapse: collapse;
+  position: relative;
+  bottom: 0;
   background-color: #fff;
   padding: 40px 20px;
   color: #333;
   width: 100%;
+  height: 320px;
 }
 
 .footer-content {
@@ -393,7 +449,6 @@ footer {
   font-size: 14px;
 }
 
-
 /* MODALS*/
 .modal {
   display: none; /* Ocultar por padrão */
@@ -404,7 +459,7 @@ footer {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente */
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente */
 }
 
 .modal-content {
@@ -415,7 +470,7 @@ footer {
   width: 90%; /* Aumentar a largura para 90% */
   max-width: 1200px; /* Largura máxima */
   border-radius: 10px; /* Cantos arredondados */
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.5); /* Sombra */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Sombra */
   color: #333333; /* Cor do texto */
   font-family: Arial, sans-serif; /* Fonte mais legível */
   line-height: 1.6; /* Espaçamento entre linhas */
@@ -442,14 +497,34 @@ footer {
   border: 1px solid #ccc;
 }
 
+/*Arrumar colunas do cadastro*/
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+}
+
+.input-modal {
+  width: 100%;
+}
+
 #submitForm {
-  background-color: #4CAF50;
-  color: white;
+  background-color: darkcyan; /* Verde mais vibrante */
+  color: rgb(255, 255, 255);
   border: none;
   padding: 10px 20px;
   margin-top: 10px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+#submitForm:hover {
+  background-color: rgb(0, 95, 139); /* Cor de hover mais escura */
 }
 
 .close {
@@ -477,7 +552,9 @@ footer {
   padding: 10px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: #444; /* Cor dos títulos */
 }
 
@@ -486,6 +563,12 @@ ul {
   padding-left: 0;
 }
 
-p, ul {
+p,
+ul {
   margin-bottom: 15px;
+}
+
+::placeholder {
+  color: #888;
+  opacity: 1; /* Para navegadores antigos */
 }
