@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitFormButton = document.getElementById('submitForm');
   const jobForm = document.getElementById('jobForm');
 
+  getAllOrders();
+
   openModalButton.onclick = function() {
     modal.style.display = 'block';
   };
@@ -20,21 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const createCard = (cityOffer, dateTimeBegin, dateTimeEnd, descriptionOffer) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <h3>${cityOffer}</h3>
-      <p>Horário: ${dateTimeBegin} - ${dateTimeEnd}</p>
-      <p>${descriptionOffer}</p>
-    `;
-    return card;
-  };
+  // const createCard = (cityOffer, dateTimeBegin, dateTimeEnd, descriptionOffer) => {
+  //   const card = document.createElement('div');
+  //   card.className = 'card';
+  //   card.innerHTML = `
+  //     <h3>${cityOffer}</h3>
+  //     <p>Horário: ${dateTimeBegin} - ${dateTimeEnd}</p>
+  //     <p>${descriptionOffer}</p>
+  //   `;
+  //   return card;
+  // };
 
-  const renderCard = (cardData) => {
-    const card = createCard(cardData.cityOffer, cardData.dateTimeBegin, cardData.dateTimeEnd, cardData.descriptionOffer);
-    mainCards.appendChild(card);
-  };
+  // const renderCard = (cardData) => {
+  //   const card = createCard(cardData.cityOffer, cardData.dateTimeBegin, cardData.dateTimeEnd, cardData.descriptionOffer);
+  //   mainCards.appendChild(card);
+  // };
 
   const submitForm = async (formData) => {
     try {
@@ -71,16 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
   //   }
   // };
 
-  const renderCards = async () => {
-    const data = await fetchData();
-    data.forEach(item => {
-      renderCard(item);
-    });
-  };
+  // const renderCards = async () => {
+  //   const data = await fetchData();
+  //   data.forEach(item => {
+  //     renderCard(item);
+  //   });
+  // };
 
-  renderCards();
+  // renderCards();
 });
 
+// ---------------------------------------------------------------------------------
 // GET METHODS
 // USER
 async function getAllUsers() {
@@ -128,6 +131,12 @@ async function getAllOrders() {
           }
           const data = response.data;
           console.log(data);
+
+          // Gera os cards para cada order dentro de data
+          data.forEach(order => {
+            renderCard(order);
+          });
+
           return data;
       })
       .catch(error => {
@@ -185,4 +194,21 @@ async function deleteOrder(orderId) {
       .catch(error => {
           console.error('Erro:', error.message);
       });
+}
+
+// CARDS SECTION
+function createCard(cityOffer, dateTimeBegin, dateTimeEnd, descriptionOffer) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+      <h3>${cityOffer}</h3>
+      <p>Horário: ${dateTimeBegin} - ${dateTimeEnd}</p>
+      <p>${descriptionOffer}</p>
+  `;
+  return card;
+}
+
+function renderCard(cardData) {
+  const card = createCard(cardData.cityOffer, cardData.dateTimeBegin, cardData.dateTimeEnd, cardData.descriptionOffer);
+  mainCards.appendChild(card);
 }
