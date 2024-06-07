@@ -80,3 +80,109 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderCards();
 });
+
+// GET METHODS
+// USER
+async function getAllUsers() {
+  const getAllUsersEndPoint = 'http://localhost:8080/customer'; // Substitua caso necessário
+
+  return axios.get(getAllUsersEndPoint)
+      .then(response => {
+          if (response.status !== 200 || response.status !== 204) {
+              throw new Error('Erro ao buscar dados dos usuários');
+          }
+          const data = response.data;
+          console.log(data);
+          return data;
+      })
+      .catch(error => {
+          console.error('Erro:', error.message);
+      });
+}
+
+async function getUserById(userId) {
+  const getUserByIdEndPoint = `http://localhost:8080/customer/${userId}`; // Substitua caso necessário
+
+  return axios.get(getUserByIdEndPoint)
+      .then(response => {
+          if (response.status !== 200 || response.status !== 204) {
+              throw new Error('Erro ao buscar os dados do usuário');
+          }
+          const data = response.data;
+          console.log(data);
+          return data;
+      })
+      .catch(error => {
+          console.error('Erro:', error.message);
+      });
+}
+
+// ORDER
+async function getAllOrders() {
+  const getAllOrdersEndPoint = 'http://localhost:8080/order-history'; // Substitua caso necessário
+
+  return axios.get(getAllOrdersEndPoint)
+      .then(response => {
+          if (response.status !== 200 || response.status !== 204) {
+              throw new Error('Erro ao buscar dados dos pedidos');
+          }
+          const data = response.data;
+          console.log(data);
+          return data;
+      })
+      .catch(error => {
+          console.error('Erro:', error.message);
+      });
+}
+
+async function getOrderById(userId) {
+  const getOrderByIdEndPoint = `http://localhost:8080/order-history/${userId}`; // Substitua caso necessário
+
+  return axios.get(getOrderByIdEndPoint)
+      .then(response => {
+          if (response.status !== 200 || response.status !== 204) {
+              throw new Error('Erro ao buscar os dados do pedido');
+          }
+          const data = response.data;
+          console.log(data);
+          return data;
+      })
+      .catch(error => {
+          console.error('Erro:', error.message);
+      });
+}
+
+// DELETE METHODS
+// USER
+async function deleteUser(userId) {
+  const deleteUserEndPoint = `http://localhost:8080/customer/delete/customer/${userId}`; // Substitua caso necessário
+
+  return axios.delete(deleteUserEndPoint)
+      .then(response => {
+          if (response.status !== 200) {
+              throw new Error('Erro ao deletar usuário');
+          }
+          console.log(`Usuário ID nº${userId} deletado com sucesso`);
+          return response.data;
+      })
+      .catch(error => {
+          console.error('Erro:', error.message);
+      });
+}
+
+// ORDER
+async function deleteOrder(orderId) {
+  const deleteOrderEndPoint = `http://localhost:8080/customer/delete/customer/${orderId}`; // Substitua caso necessário
+
+  return axios.delete(deleteOrderEndPoint)
+      .then(response => {
+          if (response.status !== 200) {
+              throw new Error('Erro ao deletar pedido');
+          }
+          console.log(`Pedido ID nº${orderId} deletado com sucesso`);
+          return response.data;
+      })
+      .catch(error => {
+          console.error('Erro:', error.message);
+      });
+}
