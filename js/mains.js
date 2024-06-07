@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const mainCards = document.getElementById('main-cards');
-  const openModalButton = document.getElementById('openModalButton');
-  const modal = document.getElementById('myModal');
-  const closeModal = document.getElementsByClassName('close')[0];
-  const submitFormButton = document.getElementById('submitForm');
-  const jobForm = document.getElementById('jobForm');
+const mainCards = document.getElementById('main-cards');
+const openModalButton = document.getElementById('openModalButton');
+const modal = document.getElementById('myModal');
+const closeModal = document.getElementsByClassName('close')[0];
+const submitFormButton = document.getElementById('submitForm');
+const jobForm = document.getElementById('jobForm');
 
+document.addEventListener('DOMContentLoaded', () => {
   getAllOrders();
 
   openModalButton.onclick = function() {
@@ -21,22 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.style.display = 'none';
     }
   };
-
-  // const createCard = (cityOffer, dateTimeBegin, dateTimeEnd, descriptionOffer) => {
-  //   const card = document.createElement('div');
-  //   card.className = 'card';
-  //   card.innerHTML = `
-  //     <h3>${cityOffer}</h3>
-  //     <p>Horário: ${dateTimeBegin} - ${dateTimeEnd}</p>
-  //     <p>${descriptionOffer}</p>
-  //   `;
-  //   return card;
-  // };
-
-  // const renderCard = (cardData) => {
-  //   const card = createCard(cardData.cityOffer, cardData.dateTimeBegin, cardData.dateTimeEnd, cardData.descriptionOffer);
-  //   mainCards.appendChild(card);
-  // };
 
   const submitForm = async (formData) => {
     try {
@@ -54,36 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submitFormButton.onclick = function() {
     const formData = {
-      cityOffer: jobForm.cityOffer.value,
-      dateTimeBegin: jobForm.dateTimeBegin.value,
-      dateTimeEnd: jobForm.dateTimeEnd.value,
-      descriptionOffer: jobForm.descriptionOffer.value
+      customerId: 1,
+      occupationId: 1,
+      cityOffer: jobForm.cidade.value,
+      dateTimeBegin: jobForm.dataComeco.value,
+      dateTimeEnd: jobForm.dataTermino.value,
+      descriptionOffer: jobForm.message.value
     };
     submitForm(formData);
     modal.style.display = 'none';
   };
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get('http://localhost:8080/order-history/${id}');
-  //     return response.data;
-  //   } catch (error) {
-  //     console.error('Erro ao buscar os dados', error);
-  //     return [];
-  //   }
-  // };
-
-  // const renderCards = async () => {
-  //   const data = await fetchData();
-  //   data.forEach(item => {
-  //     renderCard(item);
-  //   });
-  // };
-
-  // renderCards();
 });
 
-// ---------------------------------------------------------------------------------
 // GET METHODS
 // USER
 async function getAllUsers() {
@@ -126,7 +92,7 @@ async function getAllOrders() {
 
   return axios.get(getAllOrdersEndPoint)
       .then(response => {
-          if (response.status !== 200 || response.status !== 204) {
+          if (response.status !== 200 && response.status !== 204) {
               throw new Error('Erro ao buscar dados dos pedidos');
           }
           const data = response.data;
