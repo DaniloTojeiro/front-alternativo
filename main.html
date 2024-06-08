@@ -15,7 +15,7 @@
     <!-- ICONS -->
     <script src="https://kit.fontawesome.com/9189799d2b.js" crossorigin="anonymous"></script>
 
-      <!-- Axios -->
+    <!-- Axios -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
@@ -32,9 +32,9 @@
       <label class="lbl-search" for="jobs">Profissões:</label>
       <select class="custom-select">
         <option value="" selected disabled >Selecione</option>
-        <option value="jardineiro">Jardineiro</option>
-        <option value="motorista">Motorista</option>
-        <option value="pedreiro">Pedreiro</option>
+        <option value="1">Jardineiro</option>
+        <option value="2">Motorista</option>
+        <option value="3">Pedreiro</option>
     </select>
       <label class="lbl-search" for="cidade">Cidade:</label>
       <input type="text" placeholder="Pesquisar Cidades" >
@@ -44,24 +44,26 @@
       <input type="date" class="date-input">
       <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div> <br>
-    <button id="openModalButton">Abrir Modal</button>
-  <div id="myModal" class="modal">
+    <button id="openModalButton">Criar Pedido</button>
+  
+  <!-- CREATE ORDER MODAL -->
+    <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <form id="jobForm">
         <label for="cidade">Cidade:</label>
         <input type="text" id="cidade" name="cidade">
-        <label for="horario-comeco">Horário de início:</label>
+        <label for="horario-comeco">Data de início:</label>
         <input type="date" id="dataComeco" name="data-comeco">
-        <label for="horario-termino">Horário de término:</label>
+        <label for="horario-termino">Data de término:</label>
         <input type="date" id="dataTermino" name="data-termino">
         <label for="message">Descrição:</label>
         <textarea id="message" name="message"></textarea>
         <button type="button" id="submitForm">Enviar</button>
       </form>
-      
     </div>
   </div>
+  
     <main class="main-cards" id="main-cards">
     </main>
     <script src="js/mains.js"></script>

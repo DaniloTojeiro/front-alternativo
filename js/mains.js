@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const submitForm = async (formData) => {
     try {
-      const response = await axios.post('http://localhost:8080/order-history/create', formData);
+      const response = await axios.post('http://localhost:8080/order-history/create-order', formData);
       if (response.status === 201) {
         const cardData = response.data;
         renderCard(cardData);
@@ -38,8 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submitFormButton.onclick = function() {
     const formData = {
-      customerId: 1,
-      occupationId: 1,
+      customerId: {
+        customerId: 1
+      },
+      occupationId: {
+        occupationId: 1
+      },
       cityOffer: jobForm.cidade.value,
       dateTimeBegin: jobForm.dataComeco.value,
       dateTimeEnd: jobForm.dataTermino.value,
