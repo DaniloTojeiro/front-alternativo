@@ -51,19 +51,29 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <form id="jobForm">
+        <label for="ocupacao">Ocupação:</label>
+        <select id=ocupacao name="ocupacao" required>
+          <option value="1">OPÇÃO 1</option>
+          <option value="2">OPÇÃO 2</option>
+          <option value="3">OPÇÃO 3</option>
+          <option value="4">OPÇÃO 4</option>
+          <option value="5">OPÇÃO 5</option>
+        </select>
         <label for="cidade">Cidade:</label>
         <input type="text" id="cidade" name="cidade">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro">
         <label for="horario-comeco">Data de início:</label>
         <input type="date" id="dataComeco" name="data-comeco">
         <label for="horario-termino">Data de término:</label>
         <input type="date" id="dataTermino" name="data-termino">
-        <label for="message">Descrição:</label>
-        <textarea id="message" name="message"></textarea>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao"></textarea>
         <button type="button" id="submitForm">Enviar</button>
       </form>
     </div>
   </div>
-  
+
     <main class="main-cards" id="main-cards">
     </main>
     <script src="js/mains.js"></script>

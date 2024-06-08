@@ -37,18 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   submitFormButton.onclick = function() {
+    const orderDate = new Date().toISOString().split(".")[0];
+
     const formData = {
-      customerId: {
-        customerId: 1
-      },
-      occupationId: {
-        occupationId: 1
-      },
-      cityOffer: jobForm.cidade.value,
-      dateTimeBegin: jobForm.dataComeco.value,
-      dateTimeEnd: jobForm.dataTermino.value,
-      descriptionOffer: jobForm.message.value
+      customerId: { customerId: 1 },
+      occupationId: { occupationId: document.getElementById('ocupacao').value },
+      cityOffer: document.getElementById('cidade').value,
+      neighborhoodOffer: document.getElementById('bairro').value,
+      descriptionOffer: document.getElementById('descricao').value,
+      descriptionDone: "",
+      dateBegin: document.getElementById('dataComeco').value,
+      dateEnd: document.getElementById('dataTermino').value,
+      orderDate: orderDate
     };
+    console.log(formData);
     submitForm(formData);
     modal.style.display = 'none';
   };
@@ -167,18 +169,18 @@ async function deleteOrder(orderId) {
 }
 
 // CARDS SECTION
-function createCard(cityOffer, dateTimeBegin, dateTimeEnd, descriptionOffer) {
+function createCard(cityOffer, dateBegin, dateEnd, descriptionOffer) {
   const card = document.createElement('div');
   card.className = 'card';
   card.innerHTML = `
       <h3>${cityOffer}</h3>
-      <p>Horário: ${dateTimeBegin} - ${dateTimeEnd}</p>
+      <p>Horário: ${dateBegin} - ${dateEnd}</p>
       <p>${descriptionOffer}</p>
   `;
   return card;
 }
 
 function renderCard(cardData) {
-  const card = createCard(cardData.cityOffer, cardData.dateTimeBegin, cardData.dateTimeEnd, cardData.descriptionOffer);
+  const card = createCard(cardData.cityOffer, cardData.dateBegin, cardData.dateEnd, cardData.descriptionOffer);
   mainCards.appendChild(card);
 }
