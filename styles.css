@@ -24,7 +24,7 @@ body {
 /* HEADER */
 header {
   background-color: rgb(255, 255, 255);
-  height: 80px;
+  height: 100px;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -39,8 +39,9 @@ header #navbar {
   height: 80px;
 }
 header #navbar .nav-brand img {
-  width: 130px;
-  height: 50px;
+  padding-top: 12%;
+  width: 200px;
+  height: 100px;
 }
 header #navbar .nav-list {
   list-style: none;
@@ -80,18 +81,15 @@ main h1 {
 }
 main #banner {
   position: relative;
-  background: linear-gradient(
-    to bottom right,
-    #006666,
-    #004c4c
-  ); /* Gradiente de fundo */
+  background: darkcyan;
   background-size: cover;
   background-position: center;
   color: darkcyan;
   padding: 4rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   align-items: center;
+  text-align: center;
   min-width: 320px;
 }
 main #banner p {
@@ -104,12 +102,13 @@ main #banner .banner-content {
 main #banner .banner-content .banner-content-title {
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 44px;
-  font-weight: 700;
+  font-size: 42px;
+  font-weight: 500px;
   line-height: 60px;
   margin-bottom: 40px;
 }
 main #banner .banner-content .banner-content-subtitle {
+  text-align:justify;
   font-size: 18px;
   font-weight: 500;
   line-height: 26px;
@@ -294,7 +293,7 @@ input[type="date"] {
 button[type="submit"] {
   padding: 10px 15px;
   border: none;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: darkcyan;
   border-radius: 5px;
   cursor: pointer;
@@ -362,7 +361,7 @@ footer {
   position: relative;
   bottom: 0;
   background-color: #fff;
-  padding: 40px 20px;
+  padding: 40px 10px;
   color: #333;
   width: 100%;
   height: 320px;
@@ -443,7 +442,7 @@ footer {
 #footer-reserved {
   text-align: center;
   width: 100%;
-  padding: 20px 0;
+  padding: 10px;
   border-top: 1px solid #ddd;
   margin-top: 20px;
   font-size: 14px;
