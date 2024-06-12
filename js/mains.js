@@ -94,7 +94,7 @@ async function getUserById(userId) {
 
 // ORDER
 async function getAllOrders() {
-  const getAllOrdersEndPoint = 'http://localhost:8080/order-history/get-occupation'; // Substitua caso necessário
+  const getAllOrdersEndPoint = 'http://localhost:8080/order-history/all'; // Substitua caso necessário
 
   return axios.get(getAllOrdersEndPoint)
       .then(response => {
@@ -169,14 +169,15 @@ async function deleteOrder(orderId) {
 }
 
 // CARDS SECTION
-function createCard(cityOffer, dateBegin, dateEnd, descriptionOffer) {
+function createCard(cardData) {
   const card = document.createElement('div');
   card.className = 'card';
    const content = `
-      <h3>Cidade:${cityOffer}</h3><br>
-      <p>Data de começo: ${dateBegin}</p>
-      <p>Data de término:${dateEnd}</p>
-      <p>${descriptionOffer}</p>
+      <h3>Ocupação:${cardData.occupationId.occupationDescription}</h3>
+      <p>Cidade:${cardData.cityOffer}</p><br>
+      <p>Data de começo: ${cardData.dateBegin}</p>
+      <p>Data de término:${cardData.dateEnd}</p>
+      <p>${cardData.descriptionOffer}</p>
   `;
   card.innerHTML = content;
 
@@ -196,6 +197,6 @@ function createCard(cityOffer, dateBegin, dateEnd, descriptionOffer) {
 }
 
 function renderCard(cardData) {
-  const card = createCard(cardData.cityOffer, cardData.dateBegin, cardData.dateEnd, cardData.descriptionOffer);
+  const card = createCard(cardData);
   mainCards.appendChild(card);
 }
