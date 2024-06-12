@@ -94,7 +94,7 @@ async function getUserById(userId) {
 
 // ORDER
 async function getAllOrders() {
-  const getAllOrdersEndPoint = 'http://localhost:8080/order-history'; // Substitua caso necessário
+  const getAllOrdersEndPoint = 'http://localhost:8080/order-history/get-occupation'; // Substitua caso necessário
 
   return axios.get(getAllOrdersEndPoint)
       .then(response => {
@@ -172,11 +172,26 @@ async function deleteOrder(orderId) {
 function createCard(cityOffer, dateBegin, dateEnd, descriptionOffer) {
   const card = document.createElement('div');
   card.className = 'card';
-  card.innerHTML = `
-      <h3>${cityOffer}</h3>
-      <p>Horário: ${dateBegin} - ${dateEnd}</p>
+   const content = `
+      <h3>Cidade:${cityOffer}</h3><br>
+      <p>Data de começo: ${dateBegin}</p>
+      <p>Data de término:${dateEnd}</p>
       <p>${descriptionOffer}</p>
   `;
+  card.innerHTML = content;
+
+  const button = document.createElement('button');
+  button.textContent = 'Aceitar';
+
+  button.addEventListener('click', () => {
+    const moreInfo = document.createElement('p');
+    moreInfo.textContent = 'skdjfklsjdf';
+    card.appendChild(moreInfo);
+    button.remove();
+  });
+
+  card.appendChild(button);
+
   return card;
 }
 
