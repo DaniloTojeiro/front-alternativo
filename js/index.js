@@ -35,12 +35,14 @@ linkTerms.onclick = function(event) {
   event.preventDefault();
   buildTermsModalBody(); // Constrói o conteúdo do modal
   modalTerms.style.display = "block";
+  document.body.style.overflow = 'hidden';
 }
 
 linkPolitics.onclick = function(event) {
   event.preventDefault();
   buildPoliticsModalBody(); // Constrói o conteúdo do modal
   modalPolitics.style.display = "block";
+  document.body.style.overflow = 'hidden';
 }
 
 // Quando o usuário clica no <span> (x), fecha o modal
@@ -48,6 +50,7 @@ closeButtons.forEach(button => {
   button.onclick = function() {
     const modal = this.closest(".modal");
     modal.style.display = "none";
+    document.body.style.overflow = 'auto';
   }
 });
 
@@ -57,8 +60,10 @@ window.onclick = function(event) {
     modal.style.display = "none";
   } else if (event.target === modalTerms) {
     modalTerms.style.display = "none";
+    document.body.style.overflow = 'auto';
   } else if (event.target === modalPolitics) {
     modalPolitics.style.display = "none";
+    document.body.style.overflow = 'auto';
   }
 }
 
@@ -225,9 +230,9 @@ function validadeCreateCustomerForm() {
   const region = document.getElementById('region').value;
   const zipcode = document.getElementById('zip-code').value;
   const cellphone = document.getElementById('cellphone').value;
-  const number2 = document.getElementById('number2').value;
+  const telephoneNumber = document.getElementById('number2').value;
 
-  if (!firstName || !lastName || !occupation || !email || !password || !address || !neighborhood || !city || !region || !zipcode || !cellphone || !number2) {
+  if (!firstName || !lastName || !occupation || !email || !password || !address || !neighborhood || !city || !region || !zipcode || !cellphone || !telephoneNumber) {
     alert('Por favor, preencha todos os campos obrigatórios.');
     return false;
   }
@@ -251,7 +256,9 @@ function createCustomer() {
   let customer = {
     firstName: document.getElementById('first-name').value,
     lastName: document.getElementById('last-name').value,
-    occupation: document.getElementById('occupation').value,
+    occupation: {
+      occupationId: document.getElementById('occupation').value
+    },
     email: document.getElementById('new-email').value,
     password: document.getElementById('confirm-password').value,
     address: document.getElementById('address').value,
@@ -261,10 +268,12 @@ function createCustomer() {
     region: document.getElementById('region').value,
     zipcode: document.getElementById('zip-code').value,
     cellphone: document.getElementById('cellphone').value,
-    number2: document.getElementById('number2').value
+    telephoneNumber: document.getElementById('number2').value
   }
 
-  axios.post('', customer)
+  console.log(customer);
+
+  axios.post('http://localhost:8080/customer/create-customer', customer)
     .then(function(response) {
       alert('Cadastro realizado com sucesso!');
     })
