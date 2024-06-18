@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajudaqui | Perfil	</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/website-icon.png">
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>            
+    <!-- ICONS -->
+    <script src="https://kit.fontawesome.com/9189799d2b.js" crossorigin="anonymous"></script>   
+</head>
+<body>
+  <header>
+    <nav id="navbar">
+      <a class="nav-brand" href="index.html"><img src="images/logo verde.png" alt=""></a>
+  </header>
+  <main>
+    <section id="banner-profile">
+      <div class="profile-container">
+        <div class="profile-header">
+          <div class="profile-photo">AB</div>
+          <div class="profile-info">
+            <h1>Nome Sobrenome</h1>
+            <p>Ocupação</p>
+          </div>
+          <button class="btn-model" id="profile-edit-link">Editar Perfil</button>
+        </div>
+        <div class="profile-details">
+          <div class="section-container">
+            <div class="section-title">Endereço</div>
+            <div class="form-row">
+              <div class="collum">
+                <p><span>CEP:</span> 12345-678</p>
+                <p><span>Endereço:</span> Rua Exemplo</p>
+                <p><span>Estado:</span> Estado Exemplo</p>
+                <p><span>Complemento:</span> Apartamento 456</p>
+              </div>
+              <div class="collum section-content">
+                <p><span>Bairro:</span> Bairro Exemplo</p>
+                <p><span>Cidade:</span> Cidade Exemplo</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-container">
+            <div class="section-title">Contatos</div>
+            <div class="form-row">
+              <div class="collum">
+                <p><span>Celular:</span> (11) 91234-5678</p>
+                <p><span>Email:</span> email@example.com</p>
+              </div>
+              <div class="collum">
+                <p><span>Telefone:</span> (11) 3344-5566</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="editProfileModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Editar Perfil</h2>
+        <form id="editProfileForm">
+          <label for="cep">CEP:</label>
+          <input type="text" id="cep" name="cep" value="12345-678">
+          
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" name="endereco" value="Rua Exemplo">
+          
+          <label for="estado">Estado:</label>
+          <input type="text" id="estado" name="estado" value="Estado Exemplo">
+          
+          <label for="complemento">Complemento:</label>
+          <input type="text" id="complemento" name="complemento" value="Apartamento 456">
+          
+          <label for="bairro">Bairro:</label>
+          <input type="text" id="bairro" name="bairro" value="Bairro Exemplo">
+          
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" name="cidade" value="Cidade Exemplo">
+          
+          <label for="celular">Celular:</label>
+          <input type="text" id="celular" name="celular" value="(11) 91234-5678">
+          
+          <label for="telefone">Telefone:</label>
+          <input type="text" id="telefone" name="telefone" value="(11) 3344-5566">
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" value="email@example.com">
+          
+          <button type="submit-profile">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+<footer>
+  <div class="footer-content">
+      <div class="footer-section" id="footer-contato">
+        <h4>Contato</h4>
+        <p>Email: <a href="mailto:contato@ajudaaqui.com">contato@ajudaaqui.com</a></p>
+        <p>Telefone: <a href="tel:+551112345678">+55 (14) 1234-5678</a></p>
+        <p>Endereço: Rua Exemplo, 123, Ourinhos, SP</p>
+    </div>
+    <div class="footer-section" id="footer-nav">
+        <h4>Navegação</h4>
+        <ul>
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Ajuda</a></li>
+        </ul>
+    </div>
+    <div class="footer-section" id="footer-social">
+        <h4>Siga-nos</h4>
+        <ul class="social-media">
+            <li><a href="#"><img src="images/Icons/facebook_circle_line_icon verde.svg" alt="Facebook"></a></li>
+            <li><a href="#"><img src="images/Icons/x_logo_twitter_alt_icon Verde.svg" alt="Twitter/X"></a></li>
+            <li><a href="#"><img src="images/Icons/instagram_social media_icon verde.svg" alt="Instagram"></a></li>
+            <li><a href="#"><img src="images/Icons/linkedin_icon verde.svg" alt="LinkedIn"></a></li>
+        </ul>
+    </div>
+    <div class="footer-section" id="footer-legal">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#" id="terms-conditions-link">Termos e Condições de Uso</a></li>
+        <li><a href="#" id="privacy-policy-link">Política de Privacidade</a></li>
+      </ul>
+    </div>
+    <div id="footer-reserved">
+      <p>© 2024 AjudaAqui. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+<!-- MODALS -->
+<div id="createAccountModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Criar Conta</h2>
+    <div class="container">
+      <form id="createAccountForm">
+        <div class="form-row">
+          <div class="column">
+            <label for="new-email">Email:<span class="required-asterisk">*</span></label>
+            <input class="input-modal" type="email" id="new-email" name="new-email" required placeholder="Informe seu email">        
+            <label for="first-name">Nome:</label>
+            <input class="input-modal" type="text" id="first-name" name="first-name" required placeholder="Informe seu nome">
+            <label for="last-name">Sobrenome:</label>
+            <input class="input-modal" type="text" id="last-name" name="last-name" required placeholder="Informe seu sobrenome">
+            <label for="occupation">Ocupação:</label>
+            <select id=occupation name="occupation" required>
+              <!-- opções de ocupação -->
+            </select>  
+            <label for="address">Endereço:</label>
+            <input class="input-modal" type="text" id="address" name="address" required placeholder="Informe o nome da rua e número da residência">
+          </div>
+          <div class="column">
+            <label for="neighborhood">Bairro:</label>
+            <input class="input-modal" type="text" id="neighborhood" name="neighborhood" required placeholder="Informe o bairro">  
+            <label for="complement">Complemento:</label>
+            <input class="input-modal" type="text" id="complement" name="complement" required placeholder="Informe complemento, se houver">
+            <label for="city">Cidade:</label>
+            <input class="input-modal" type="text" id="city" name="city" required placeholder="Informe a cidade">
+            <label for="region">Estado:</label>
+            <select id="region" name="region">
+              <option value="" selected disabled>Selecione um estado</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+            <label for="zip-code">CEP:</label>
+            <input class="input-modal" type="text" id="zip-code" name="zip-code" required placeholder="Digite apenas os números">
+            <label for="cellphone">Celular:</label>
+            <input type="tel" id="cellphone" name="cellphone" required placeholder="Digite apenas os números">
+            <label for="number2">Telefone:</label>
+            <input type="tel" id="number2" name="number2" required placeholder="Digite apenas os números">
+          </div>
+        </div>
+        <button class="btn-model" type="submit">Criar Conta</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="terms-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Termos e Condições de Uso</h2>
+      <div class="modal-terms-body">
+
+      </div>
+  </div>
+</div>  
+<div id="politics-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Políticas de Privacidade</h2>
+      <div class="modal-privacy-body">
+
+      </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
