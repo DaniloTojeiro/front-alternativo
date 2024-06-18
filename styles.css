@@ -68,7 +68,7 @@ main #banner {
   color: darkcyan;
   padding: 6rem 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   align-items: center;
 }
