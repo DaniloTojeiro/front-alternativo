@@ -94,7 +94,7 @@ async function getUserById(userId) {
 
 // ORDER
 async function getAllOrders() {
-  const getAllOrdersEndPoint = 'http://localhost:8080/order-history/all'; // Substitua caso necessário
+  const getAllOrdersEndPoint = 'http://localhost:8080/order-history'; // Substitua caso necessário
 
   return axios.get(getAllOrdersEndPoint)
       .then(response => {

@@ -17,7 +17,7 @@ body {
 /* HEADER */
 header {
   background-color: rgb(255, 255, 255);
-  height: 80px;
+  height: 100px;
 }
 header #navbar {
   display: flex;
@@ -29,8 +29,9 @@ header #navbar {
   height: 80px;
 }
 header #navbar .nav-brand img {
-  width: 130px;
-  height: 50px;
+  padding-top: 12%;
+  width: 200px;
+  height: 100px;
 }
 header #navbar .nav-list {
   list-style: none;
@@ -39,8 +40,9 @@ header #navbar .nav-list {
   gap: 2rem;
 }
 header #navbar .nav-list .nav-item a {
+  text-align: center;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
 }
 header #navbar .nav-list .nav-item a:hover {
@@ -66,7 +68,8 @@ main #banner {
   color: darkcyan;
   padding: 6rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   align-items: center;
 }
 main #banner p{
@@ -77,12 +80,13 @@ main #banner .banner-content {
   z-index: 1;
 }
 main #banner .banner-content .banner-content-title {
-  font-size: 44px;
-  font-weight: 700;
+  font-size: 42px;
+  font-weight: 500px;
   line-height: 60px;
   margin-bottom: 40px;
 }
 main #banner .banner-content .banner-content-subtitle {
+  text-align: justify;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -518,7 +522,7 @@ p, ul {
   flex-direction: row;
   gap: 1px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #ffffffb6;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 2rem 2rem;
@@ -607,7 +611,7 @@ p, ul {
   position: absolute;
   top: -20px;
   left: 20px;
-  background-color: rgba(255, 255, 255);
+  background-color: #ffffffb6;
   padding: 0 10px;
   font-size: 24px;
   font-weight: 800;
