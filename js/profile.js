@@ -65,8 +65,24 @@ function fillUserProfile(data) {
   document.getElementById('complement').innerHTML = `<span>Complemento:</span> ${data.complement}`;
   document.getElementById('neighborhood').innerHTML = `<span>Bairro:</span> ${data.neighborhood}`;
   document.getElementById('city').innerHTML = `<span>Cidade:</span> ${data.city}`;
-
   document.getElementById('cellphone').innerHTML = `<span>Celular:</span> ${data.cellphone}`;
   document.getElementById('email').innerHTML = `<span>Email:</span> ${data.email}`;
   document.getElementById('telephoneNumber').innerHTML = `<span>Telefone:</span> ${data.telephoneNumber}`;
+}
+
+function fillEditProfileModal(data) {
+  document.getElementById('new-email').value = data.email;
+  document.getElementById('new-password').value = data.password;
+  // document.getElementById('confirm-password').value = data.password;
+  document.getElementById('first-name').value = data.firstName;
+  document.getElementById('last-name').value = data.lastName;
+  document.getElementById('occupation').value = data.occupation.occupationId;
+  document.getElementById('address').value = data.address;
+  document.getElementById('neighborhood').value = data.neighborhood;
+  document.getElementById('complement').value = data.complement;
+  document.getElementById('city').value = data.city;
+  document.getElementById('region').value = data.region;
+  document.getElementById('zip-code').value = data.zipcode;
+  document.getElementById('cellphone').value = data.cellphone;
+  document.getElementById('number2').value = data.telephoneNumber;
 }
