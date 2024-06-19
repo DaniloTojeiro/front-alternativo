@@ -224,6 +224,7 @@ main #banner .login-banner form button {
 /* MAIN PAGE SEARCH-CONTAINER */
 .search-container {
   display: flex;
+  padding: 0 1rem;
   flex-wrap: wrap; /* Adiciona quebra de linha quando necessário */
   justify-content: center; /* Centraliza os elementos horizontalmente */
   align-items: center; /* Centraliza os elementos verticalmente */
@@ -240,6 +241,7 @@ input[type="text"],
 input[type="date"] {
   flex: 1; /* Distribui o espaço igualmente entre os elementos */
   margin-right: 10px; /* Adiciona um espaçamento entre os elementos */
+  min-width: 158px;
   border: none;
   border-radius: 10px;
   padding: 0.5rem;
