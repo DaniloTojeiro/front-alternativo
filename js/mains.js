@@ -134,6 +134,27 @@ async function getOrderById(userId) {
       });
 }
 
+async function getOrderSearch(url) {
+  return axios.get(url)
+      .then(response => {
+          if (response.status !== 200 && response.status !== 204) {
+              throw new Error('Erro ao buscar dados dos pedidos');
+          }
+          const data = response.data;
+          console.log(data);
+
+          // Gera os cards para cada order dentro de data
+          data.forEach(order => {
+            renderCard(order);
+          });
+
+          return data;
+      })
+      .catch(error => {
+          console.error('Erro:', error.message);
+      });
+}
+
 // OCCUPATION
 async function getAllOccupations() {
   const getAllOccupationsEndPoint = 'http://localhost:8080/occupation';
@@ -222,6 +243,14 @@ function renderCard(cardData) {
   mainCards.appendChild(card);
 }
 
+function clearCards() {
+  const mainCards = document.getElementById('mainCards');
+  while (mainCards.firstChild) {
+    mainCards.removeChild(mainCards.firstChild);
+  }
+}
+
+
 // FILTER BAR SECTION
 function populateOccupations() {
   getAllOccupations().then(data => {
@@ -256,7 +285,14 @@ function searchOrders() {
       to: toDate.value
   };
 
-  const url = buildSearchURL('http://localhost:8080/order-history', params);
+  const url = buildSearchURL('http://localhost:8080/order-history/search-orders', params);
 
   console.log('Generated URL:', url);
+
+  if (url) {
+    clearCards();
+    getOrderSearch(url);
+  }
+
+  return url;
 }
