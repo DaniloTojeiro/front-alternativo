@@ -103,123 +103,98 @@
     </div>
   </footer>
 
-  <!-- Modal -->
-  <div id="createAccountModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Criar Conta</h2>
-      <div class="container">
-        <form id="createAccountForm">
-          <div class="form-row">
-            <div class="column">
-              <label for="new-email">Email:<span class="required-asterisk">*</span></label>
-              <input class="input-modal" type="email" id="new-email" name="new-email" required
-                placeholder="Informe seu email">
-              <label for="first-name">Nome:</label>
-              <input class="input-modal" type="text" id="first-name" name="first-name" required
-                placeholder="Informe seu nome">
-              <label for="last-name">Sobrenome:</label>
-              <input class="input-modal" type="text" id="last-name" name="last-name" required
-                placeholder="Informe seu sobrenome">
-              <label for="occupation">Ocupação:</label>
-              <select id=occupation name="occupation" required>
-                <!-- opções de ocupação -->
-              </select>
-              <label for="address">Endereço:</label>
-              <input class="input-modal" type="text" id="address" name="address" required
-                placeholder="Informe o nome da rua e número da residência">
-            </div>
-            <div class="column">
-              <label for="neighborhood">Bairro:</label>
-              <input class="input-modal" type="text" id="neighborhood" name="neighborhood" required
-                placeholder="Informe o bairro">
-              <label for="complement">Complemento:</label>
-              <input class="input-modal" type="text" id="complement" name="complement" required
-                placeholder="Informe complemento, se houver">
-              <label for="city">Cidade:</label>
-              <input class="input-modal" type="text" id="city" name="city" required placeholder="Informe a cidade">
-              <label for="region">Estado:</label>
-              <select id="region" name="region">
-                <option value="" selected disabled>Selecione um estado</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-              </select>
-              <label for="zip-code">CEP:</label>
-              <input class="input-modal" type="text" id="zip-code" name="zip-code" required
-                placeholder="Digite apenas os números">
-              <label for="cellphone">Celular:</label>
-              <input type="tel" id="cellphone" name="cellphone" required placeholder="Digite apenas os números">
-              <label for="number2">Telefone:</label>
-              <input type="tel" id="number2" name="number2" required placeholder="Digite apenas os números">
-            </div>
-          </div>
-          <button class="btn-model" type="submit">Criar Conta</button>
-        </form>
-      </div>
-    </div>
-  </div>
+<!-- Modal -->
+<div id="editProfileModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Editar Perfil</h2>
+    <div class="container">
+      <form id="createAccountForm">
+        <div class="column1">
+          <label for="new-email">Email:<span class="required-asterisk">*</span></label>
+          <input class="input-modal" type="email" id="new-email" name="new-email" required placeholder="Informe seu email">
+          
+          <label for="new-password">Senha:<span class="required-asterisk">*</span></label>
+          <input class="input-modal" type="password" id="new-password" name="new-password" required placeholder="Informe sua senha">
+          
+          <label for="confirm-password">Confirmar Senha:<span class="required-asterisk">*</span></label>
+          <input class="input-modal" type="password" id="confirm-password" name="confirm-password" required placeholder="Confirme sua senha">
+          
+          <label for="first-name">Nome:</label>
+          <input class="input-modal" type="text" id="first-name" name="first-name" required placeholder="Informe seu nome">
 
-  <div id="editProfileModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Editar Perfil</h2>
-      <form id="editProfileForm">
-        <label for="cep">CEP:</label>
-        <input type="text" id="cep" name="cep" value="12345-678">
+          <label for="last-name">Sobrenome:</label>
+          <input class="input-modal" type="text" id="last-name" name="last-name" required placeholder="Informe seu sobrenome">
 
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco" value="Rua Exemplo">
+          <label for="occupation">Ocupação:</label>
+          <select id=occupation name="occupation" required>
+            <option value="1">OPÇÃO 1</option>
+            <option value="2">OPÇÃO 2</option>
+            <option value="3">OPÇÃO 3</option>
+            <option value="4">OPÇÃO 4</option>
+            <option value="5">OPÇÃO 5</option>
+          </select>  
+        </div>
+        
+        <div class="column2">
+          <label for="address">Endereço:</label>
+          <input class="input-modal" type="text" id="address" name="address" required placeholder="Informe o nome da rua e número da residência">
 
-        <label for="estado">Estado:</label>
-        <input type="text" id="estado" name="estado" value="Estado Exemplo">
+          <label for="neighborhood">Bairro:</label>
+          <input class="input-modal" type="text" id="neighborhood" name="neighborhood" required placeholder="Informe o bairro">
 
-        <label for="complemento">Complemento:</label>
-        <input type="text" id="complemento" name="complemento" value="Apartamento 456">
+          <label for="complement">Complemento:</label>
+          <input class="input-modal" type="text" id="complement" name="complement" required placeholder="Informe complemento, se houver">
 
-        <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" name="bairro" value="Bairro Exemplo">
+          <label for="city">Cidade:</label>
+          <input class="input-modal" type="text" id="city" name="city" required placeholder="Informe a cidade">
 
-        <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" name="cidade" value="Cidade Exemplo">
+          <label for="region">Estado:</label>
+          <select id="region" name="region" required>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
 
-        <label for="celular">Celular:</label>
-        <input type="text" id="celular" name="celular" value="(11) 91234-5678">
+          <label for="zip-code">CEP:</label>
+          <input type="text" id="zip-code" name="zip-code" required placeholder="Digite apenas os números">
 
-        <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" name="telefone" value="(11) 3344-5566">
+          <label for="cellphone">Celular:</label>
+          <input type="tel" id="cellphone" name="cellphone" required placeholder="Digite apenas os números">
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="email@example.com">
+          <label for="number2">Telefone:</label>
+          <input type="tel" id="number2" name="number2" required placeholder="Digite apenas os números">
+        </div>
 
-        <button type="submit-profile">Salvar</button>
+        <button class="btn-model" type="submit">Confirmar</button>
       </form>
     </div>
   </div>
+</div>
 
   <div id="terms-modal" class="modal">
     <div class="modal-content">

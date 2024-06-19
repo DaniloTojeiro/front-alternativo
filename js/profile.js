@@ -1,6 +1,6 @@
-const modal = document.getElementById("editProfileModal");
-const btn = document.getElementById("profile-edit-link");
-const span = document.getElementsByClassName("close")[0];
+const editModal = document.getElementById("editProfileModal");
+const btnEditModal = document.getElementById("profile-edit-link");
+const spanClose = document.querySelector("#editProfileModal .close");
 
 document.addEventListener('DOMContentLoaded', async () => {
   const userId = 1;
@@ -15,32 +15,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 });
 
-// document.addEventListener('DOMContentLoaded', (event) => {
-//   function cleanModalInputs() {
-//     document.getElementById("editProfileForm").reset();
-//   } 
-//   btn.onclick = function(event) {
-//     event.preventDefault(); 
-//     modal.style.display = "block";
-//   }  
-//   span.onclick = function() {
-//     modal.style.display = "none";
-//     cleanModalInputs();
-//   }
-//   window.onclick = function(event) {
-//     if (event.target == modal) {
-//       modal.style.display = "none";
-//       cleanModalInputs();
-//     }
-//   }
-//   document.getElementById("editProfileForm").onsubmit = function(event) {
-//     event.preventDefault();
-//     alert("Perfil atualizado!");
-//     modal.style.display = "none";
-//     cleanModalInputs();
-//   }
-// });
+// EDIT PROFILE MODAL EVENTS
+btnEditModal.onclick = function(event) {
+  event.preventDefault();
+  editModal.style.display = "block";
+}
 
+spanClose.onclick = function() {
+  editModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target === editModal) {
+    editModal.style.display = "none";
+  }
+}
+
+// USER RELATED FUNCTIONS
 async function getUserById(userId) {
   const getUserByIdEndPoint = `http://localhost:8080/customer/${userId}`;
 

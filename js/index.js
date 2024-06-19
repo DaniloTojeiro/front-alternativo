@@ -15,7 +15,7 @@ const btnCriarConta = document.querySelector('.btn-model');
 
 // Quando o usuário clica no link, abre o modal
 link.onclick = function(event) {
-  event.preventDefault(); // Previne o comportamento padrão do link
+  event.preventDefault();
   modal.style.display = "block";
 }
 
