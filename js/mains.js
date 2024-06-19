@@ -7,6 +7,7 @@ const jobForm = document.getElementById('jobForm');
 
 document.addEventListener('DOMContentLoaded', () => {
   getAllOrders();
+  populateOccupations();
 
   openModalButton.onclick = function() {
     modal.style.display = 'block';
@@ -133,6 +134,26 @@ async function getOrderById(userId) {
       });
 }
 
+// OCCUPATION
+async function getAllOccupations() {
+  const getAllOccupationsEndPoint = 'http://localhost:8080/occupation';
+
+  return axios.get(getAllOccupationsEndPoint)
+    .then(response => {
+      if (response.status !== 200 && response.status !== 204) {
+        throw new Error('Erro ao buscar ocupações');
+      }
+      const data = response.data;
+      console.log(data);
+      return data;
+    })
+    .catch(error => {
+      console.error('Erro:', error.message);
+    });
+}
+
+console.log(getAllOccupations());
+
 // DELETE METHODS
 // USER
 async function deleteUser(userId) {
@@ -199,4 +220,43 @@ function createCard(cardData) {
 function renderCard(cardData) {
   const card = createCard(cardData);
   mainCards.appendChild(card);
+}
+
+// FILTER BAR SECTION
+function populateOccupations() {
+  getAllOccupations().then(data => {
+      const select = document.getElementById('occupation-select');
+      data.forEach(occupation => {
+          const option = document.createElement('option');
+          option.value = occupation.occupationId;
+          option.textContent = occupation.occupationDescription;
+          select.appendChild(option);
+      });
+  });
+}
+
+function buildSearchURL(baseURL, params) {
+  const queryString = Object.keys(params)
+      .filter(key => params[key])
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+      .join('&');
+  return `${baseURL}?${queryString}`;
+}
+
+function searchOrders() {
+  const occupationSelect = document.getElementById('occupation-select');
+  const cityInput = document.getElementById('city-input');
+  const fromDate = document.getElementById('from-date');
+  const toDate = document.getElementById('to-date');
+
+  const params = {
+      occupationId: occupationSelect.value,
+      city: cityInput.value,
+      from: fromDate.value,
+      to: toDate.value
+  };
+
+  const url = buildSearchURL('http://localhost:8080/order-history', params);
+
+  console.log('Generated URL:', url);
 }

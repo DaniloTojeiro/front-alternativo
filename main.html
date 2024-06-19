@@ -33,20 +33,18 @@
   <section id="banner"></section>
   <div class="search-container">
     <label class="lbl-search" for="jobs">Profissões:</label>
-    <select class="custom-select">
+    <select class="custom-select" id="occupation-select"> <!-- filter bar -->
       <option value="" selected disabled>Selecione</option>
-      <option value="1">Jardineiro</option>
-      <option value="2">Motorista</option>
-      <option value="3">Pedreiro</option>
     </select>
     <label class="lbl-search" for="cidade">Cidade:</label>
-    <input type="text" placeholder="Pesquisar Cidades">
+    <input type="text" placeholder="Pesquisar Cidades" id="city-input">
     <label class="lbl-search" for="from">De:</label>
-    <input type="date" class="date-input">
+    <input type="date" class="date-input" id="from-date">
     <label class="lbl-search" for="to">Até:</label>
-    <input type="date" class="date-input">
-    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </div> <br>
+    <input type="date" class="date-input" id="to-date">
+    <button type="submit" onclick="searchOrders()"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+  <br><!-- end filter bar -->
   <button id="openModalButton">Criar Pedido</button>
 
   <!-- CREATE ORDER MODAL -->
