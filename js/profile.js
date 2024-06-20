@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 btnConfirmEdit.addEventListener('click', function(event) {
     event.preventDefault();
     if(validadeEditCustomerForm()) {
-        editCustomer();
+        editCustomer(userId);
       }
 });
 
@@ -212,10 +212,9 @@ function fillUserProfile(data) {
     document.getElementById('telephoneNumber').innerHTML = `<span>Telefone:</span> ${data.telephoneNumber}`;
 }
 
-function editCustomer() {
-    const editCustomerEndPoint = `http://localhost:8080/customer/${userId}`;
+function editCustomer(userId) {
+    const editCustomerEndPoint = `http://localhost:8080/customer/update/${userId}`;
     let customer = {
-      id: userId,
       firstName: document.getElementById("edit-first-name").value,
       lastName: document.getElementById("edit-last-name").value,
       occupation: {
@@ -236,7 +235,7 @@ function editCustomer() {
     console.log(customer);
 
     axios
-      .post(editCustomerEndPoint, customer)
+      .put(editCustomerEndPoint, customer)
       .then(function (response) {
         Swal.fire({
           title: "Sucesso!",
