@@ -69,7 +69,7 @@ main h1{
   color: darkcyan;
   display: flex;
   padding-bottom: 10rem; 
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   min-width: 320px;
 }
@@ -274,6 +274,17 @@ main #banner .login-banner form button {
 
 
 /* MAIN PAGE SEARCH-CONTAINER */
+#banner-main{
+  background-color: darkcyan;
+  background-size: cover;
+  background-position: center;
+  color: darkcyan;
+  display: flex;
+  padding-bottom: 10rem; 
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+}
 .search-container {
   display: flex;
   padding: 0 1rem;
