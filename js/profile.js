@@ -17,16 +17,40 @@ document.addEventListener('DOMContentLoaded', async () => {
     // DELETE PROFILE EVENT
     btnDeleteProfile.onclick = async function(event) {
         event.preventDefault();
-        const confirmDelete = window.confirm("Tem certeza que deseja deletar o perfil?");
-        if (confirmDelete) {
-            try {
-                await deleteUserProfile(userId);
-                alert("Perfil deletado com sucesso!");
-            } catch (error) {
-                alert("Erro ao deletar o perfil: " + error.message);
+
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: "Você não poderá reverter isso!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, deletar!',
+            cancelButtonText: 'Cancelar'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await deleteUserProfile(userId);
+                    Swal.fire({
+                        title: 'Deletado!',
+                        text: 'Perfil deletado com sucesso!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'index.html';
+                    });
+                } catch (error) {
+                    Swal.fire({
+                        title: 'Erro!',
+                        text: 'Erro ao deletar o perfil: ' + error.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
             }
-        }
+        });
     }
+
 });
 
 // EDIT PROFILE MODAL EVENTS
