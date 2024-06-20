@@ -30,23 +30,23 @@
         </li>
       </ul>
   </header>
-  <section id="banner"></section>
-  <div class="search-container">
-    <label class="lbl-search" for="jobs">Profissões:</label>
-    <select class="custom-select" id="occupation-select"> <!-- filter bar -->
-      <option value="" selected disabled>Selecione</option>
-    </select>
-    <label class="lbl-search" for="cidade">Cidade:</label>
-    <input type="text" placeholder="Pesquisar Cidades" id="city-input">
-    <label class="lbl-search" for="from">De:</label>
-    <input type="date" class="date-input" id="from-date">
-    <label class="lbl-search" for="to">Até:</label>
-    <input type="date" class="date-input" id="to-date">
-    <button type="submit" onclick="searchOrders()"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </div>
-  <br><!-- end filter bar -->
-  <button id="openModalButton">Criar Pedido</button>
-
+  <section id="banner">
+    <div class="search-container">
+      <label class="lbl-search" for="jobs">Profissões:</label>
+      <select class="custom-select" id="occupation-select"> <!-- filter bar -->
+        <option value="" selected disabled>Selecione</option>
+      </select>
+      <label class="lbl-search" for="cidade">Cidade:</label>
+      <input type="text" placeholder="Pesquisar Cidades" id="city-input">
+      <label class="lbl-search" for="from">De:</label>
+      <input type="date" class="date-input" id="from-date">
+      <label class="lbl-search" for="to">Até:</label>
+      <input type="date" class="date-input" id="to-date">
+      <button type="submit" onclick="searchOrders()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <button id="openModalButton">Criar Pedido</button>
+    <main class="main-cards" id="main-cards"></main>
+  </section>
   <!-- CREATE ORDER MODAL -->
   <div id="myModal" class="modal">
     <div class="modal-content">
@@ -74,10 +74,7 @@
       </form>
     </div>
   </div>
-
-  <main class="main-cards" id="main-cards">
-    <!-- CARDS SECTION -->
-  </main>
+  <main class="main-cards" id="main-cards"></main>
   <footer>
     <div class="footer-content">
       <div class="footer-section" id="footer-contato">

@@ -62,6 +62,18 @@ main h1{
   color: white;
 }
 
+#banner{
+  background-color: darkcyan;
+  background-size: cover;
+  background-position: center;
+  color: darkcyan;
+  display: flex;
+  padding-bottom: 10rem; 
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+}
+
 main #banner {
   position: relative;
   background-color: darkcyan;
@@ -274,25 +286,37 @@ main #banner .login-banner form button {
 .lbl-search {
   color: white;
   margin-right: 10px; /* Adiciona espaço entre os labels */
+  margin-bottom: 0.7rem;
 }
 
 .custom-select,
-input[type="text"],
-input[type="date"] {
+input[type="text"]{
   flex: 1; /* Distribui o espaço igualmente entre os elementos */
   margin-right: 10px; /* Adiciona um espaçamento entre os elementos */
-  min-width: 158px;
+  min-width: 240px;
   border: none;
   border-radius: 10px;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 16px;
+}
+.custom-select{
+  margin-top: 0.4rem;
+}
+
+
+.date-input {
+  flex: 1; /* Distribui o espaço igualmente entre os elementos */
+  margin-right: 10px; /* Adiciona um espaçamento entre os elementos */
+  min-width: 150px;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 0.4rem;
   font-size: 16px;
 }
 
-.date-input {
-  width: 150px; /* Defina o tamanho desejado para o input de data */
-}
-
-button[type="submit"] {
+.search-container [type="submit"] {
   padding: 10px 15px;
   border: none;
   background-color: white;
@@ -302,13 +326,9 @@ button[type="submit"] {
   font-size: 16px;
 }
 
-button[type="submit"]:hover {
+.search-container [type="submit"]:hover {
   background-color: rgb(6, 80, 80);
   color: white;
-}
-
-.fa-magnifying-glass {
-  font-size: 20px;
 }
 
 /* MAIN CARDS */
@@ -380,6 +400,10 @@ footer {
   align-items: left;
   justify-content: space-between;
   gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 0 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
