@@ -24,17 +24,36 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const submitForm = async (formData) => {
-    try {
-      const response = await axios.post('http://localhost:8080/order-history/create-order', formData);
-      if (response.status === 200) {
-        const cardData = response.data;
-        renderCard(cardData);
-      } else {
-        console.error('Erro ao criar o pedido', response.status);
-      }
-    } catch (error) {
-      console.error('Erro na requisição', error);
-    }
+    return await axios.post('http://localhost:8080/order-history/create-order', formData)
+    .then(function(response) {
+      Swal.fire({
+        title: 'Sucesso!',
+        text: 'Pedido cadastrado com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+    })
+    .catch(function(error) {
+      console.error('Houve um erro ao cadastrar o pedido', error);
+      Swal.fire({
+        title: 'Erro!',
+        icon: 'error',
+        text: 'Erro ao cadastrar o pedido!',
+        confirmButtonText: 'OK'
+      });
+    });
+
+    // try {
+    //   const response = await axios.post('http://localhost:8080/order-history/create-order', formData);
+    //   if (response.status === 200) {
+    //     const cardData = response.data;
+    //     renderCard(cardData);
+    //   } else {
+    //     console.error('Erro ao criar o pedido', response.status);
+    //   }
+    // } catch (error) {
+    //   console.error('Erro na requisição', error);
+    // }
   };
 
   submitFormButton.onclick = function() {

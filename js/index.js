@@ -275,10 +275,20 @@ function createCustomer() {
 
   axios.post('http://localhost:8080/customer/create-customer', customer)
     .then(function(response) {
-      alert('Cadastro realizado com sucesso!');
+      Swal.fire({
+        title: 'Sucesso!',
+        text: 'Cadastro realizado com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
     })
     .catch(function(error) {
       console.error('Houve um erro ao cadastrar o usuário', error);
-      alert('Erro ao realizar o cadastro!');
-    })
+      Swal.fire({
+        title: 'Erro!',
+        text: 'Erro ao realizar o cadastro!',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
 }
