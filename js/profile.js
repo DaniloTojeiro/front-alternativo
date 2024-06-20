@@ -53,7 +53,7 @@ function fillUserProfile(data) {
   const profilePhoto = document.querySelector('.profile-photo');
   profilePhoto.textContent = data.firstName.charAt(0) + data.lastName.charAt(0);
 
-  const profileName = document.querySelector('.profile-info h1');
+  const profileName = document.getElementById('h1-profile-name');
   profileName.textContent = `${data.firstName} ${data.lastName}`;
 
   const profileOccupation = document.querySelector('.profile-info p');
