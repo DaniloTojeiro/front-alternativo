@@ -15,6 +15,7 @@ const btnCriarConta = document.querySelector('.btn-model');
 
 // Quando o usuário clica no link, abre o modal
 link.onclick = function(event) {
+  populateOccupations();
   event.preventDefault();
   modal.style.display = "block";
 }
@@ -164,7 +165,6 @@ function buildPoliticsModalBody() {
   divModalPoliticsBody.innerHTML = htmlPolitics;
 }
 
-
 // Função de formatação de CEP, celular e telefone
 document.addEventListener("DOMContentLoaded", function() {
   const zipCodeInput = document.getElementById('zip-code');
@@ -290,5 +290,34 @@ function createCustomer() {
         icon: 'error',
         confirmButtonText: 'OK'
       });
+    });
+}
+
+function populateOccupations() {
+  getAllOccupations().then(data => {
+      const select = document.getElementById('create-user-occupation');
+      data.forEach(occupation => {
+          const option = document.createElement('option');
+          option.value = occupation.occupationId;
+          option.textContent = occupation.occupationDescription;
+          select.appendChild(option);
+      });
+  });
+}
+
+async function getAllOccupations() {
+  const getAllOccupationsEndPoint = 'http://localhost:8080/occupation';
+
+  return axios.get(getAllOccupationsEndPoint)
+    .then(response => {
+      if (response.status !== 200 && response.status !== 204) {
+        throw new Error('Erro ao buscar ocupações');
+      }
+      const data = response.data;
+      console.log(data);
+      return data;
+    })
+    .catch(error => {
+      console.error('Erro:', error.message);
     });
 }

@@ -123,40 +123,36 @@
           <label for="new-password">Senha:<span class="required-asterisk">*</span></label>
           <input class="input-modal" type="password" id="new-password" name="new-password" required placeholder="Informe sua senha">
           
-          <label for="confirm-password">Confirmar Senha:<span class="required-asterisk">*</span></label>
-          <input class="input-modal" type="password" id="confirm-password" name="confirm-password" required placeholder="Confirme sua senha">
+          <label for="confirm-new-password">Confirmar Senha:<span class="required-asterisk">*</span></label>
+          <input class="input-modal" type="password" id="confirm-new-password" name="confirm-password" required placeholder="Confirme sua senha">
           
-          <label for="first-name">Nome:</label>
-          <input class="input-modal" type="text" id="first-name" name="first-name" required placeholder="Informe seu nome">
+          <label for="edit-first-name">Nome:</label>
+          <input class="input-modal" type="text" id="edit-first-name" name="edit-first-name" required placeholder="Informe seu nome">
 
-          <label for="last-name">Sobrenome:</label>
-          <input class="input-modal" type="text" id="last-name" name="last-name" required placeholder="Informe seu sobrenome">
+          <label for="edit-last-name">Sobrenome:</label>
+          <input class="input-modal" type="text" id="edit-last-name" name="edit-last-name" required placeholder="Informe seu sobrenome">
 
-          <label for="occupation">Ocupação:</label>
-          <select id=occupation name="occupation" required>
-            <option value="1">OPÇÃO 1</option>
-            <option value="2">OPÇÃO 2</option>
-            <option value="3">OPÇÃO 3</option>
-            <option value="4">OPÇÃO 4</option>
-            <option value="5">OPÇÃO 5</option>
+          <label for="edit-user-occupation">Ocupação:</label>
+          <select id="edit-user-occupation" name="edit-user-occupation" required>
+            <!-- Occupations options -->
           </select>  
         </div>
         
         <div class="column2">
-          <label for="address">Endereço:</label>
-          <input class="input-modal" type="text" id="address" name="address" required placeholder="Informe o nome da rua e número da residência">
+          <label for="edit-address">Endereço:</label>
+          <input class="input-modal" type="text" id="edit-address" name="edit-address" required placeholder="Informe o nome da rua e número da residência">
 
-          <label for="neighborhood">Bairro:</label>
-          <input class="input-modal" type="text" id="neighborhood" name="neighborhood" required placeholder="Informe o bairro">
+          <label for="edit-neighborhood">Bairro:</label>
+          <input class="input-modal" type="text" id="edit-neighborhood" name="edit-neighborhood" required placeholder="Informe o bairro">
 
-          <label for="complement">Complemento:</label>
-          <input class="input-modal" type="text" id="complement" name="complement" required placeholder="Informe complemento, se houver">
+          <label for="edit-complement">Complemento:</label>
+          <input class="input-modal" type="text" id="edit-complement" name="edit-complement" required placeholder="Informe complemento, se houver">
 
-          <label for="city">Cidade:</label>
-          <input class="input-modal" type="text" id="city" name="city" required placeholder="Informe a cidade">
+          <label for="edit-city">Cidade:</label>
+          <input class="input-modal" type="text" id="edit-city" name="edit-city" required placeholder="Informe a cidade">
 
-          <label for="region">Estado:</label>
-          <select id="region" name="region" required>
+          <label for="edit-region">Estado:</label>
+          <select id="edit-region" name="edit-region" required>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
@@ -186,17 +182,17 @@
             <option value="TO">Tocantins</option>
           </select>
 
-          <label for="zip-code">CEP:</label>
-          <input type="text" id="zip-code" name="zip-code" required placeholder="Digite apenas os números">
+          <label for="edit-zip-code">CEP:</label>
+          <input type="text" id="edit-zip-code" name="edit-zip-code" required placeholder="Digite apenas os números">
 
-          <label for="cellphone">Celular:</label>
-          <input type="tel" id="cellphone" name="cellphone" required placeholder="Digite apenas os números">
+          <label for="edit-cellphone">Celular:</label>
+          <input type="tel" id="edit-cellphone" name="edit-cellphone" required placeholder="Digite apenas os números">
 
-          <label for="number2">Telefone:</label>
-          <input type="tel" id="number2" name="number2" required placeholder="Digite apenas os números">
+          <label for="edit-telephone">Telefone:</label>
+          <input type="tel" id="edit-telephone" name="edit-telephone" required placeholder="Digite apenas os números">
         </div>
 
-        <button class="btn-model" type="submit">Confirmar</button>
+        <button class="btn-model" id="confirmEdit" type="submit">Confirmar</button>
       </form>
     </div>
   </div>

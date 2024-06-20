@@ -2,10 +2,11 @@ const editModal = document.getElementById("editProfileModal");
 const btnEditModal = document.getElementById("profile-edit-link");
 const spanClose = document.querySelector("#editProfileModal .close");
 const btnDeleteProfile = document.getElementById("profile-delete-link");
+const userId = 2
+btnConfirmEdit = document.getElementById("confirmEdit");
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const userId = 4;
-
+    
     if (userId) {
         const userData = await getUserById(userId);
         console.log(userData);
@@ -34,9 +35,61 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 });
 
-// EDIT PROFILE MODAL EVENTS
-btnEditModal.onclick = function(event) {
+// CONFIRM EDIT EVENTS
+btnConfirmEdit.addEventListener('click', function(event) {
     event.preventDefault();
+    if(validadeEditCustomerForm()) {
+        editCustomer();
+      }
+});
+
+function validadeEditCustomerForm() {
+    const firstName = document.getElementById('edit-first-name').value;
+    const lastName = document.getElementById('edit-last-name').value;
+    const occupation = document.getElementById('edit-user-occupation').value;
+    const email = document.getElementById('new-email').value;
+    const password = document.getElementById('new-password').value;
+    const address = document.getElementById('edit-address').value;
+    const neighborhood = document.getElementById('edit-neighborhood').value;
+    const city = document.getElementById('edit-city').value;
+    const region = document.getElementById('edit-region').value;
+    const zipcode = document.getElementById('edit-zip-code').value;
+    const cellphone = document.getElementById('edit-cellphone').value;
+    const telephoneNumber = document.getElementById('edit-telephone').value;
+  
+    if (!firstName || !lastName || !occupation || !email || !password || !address || !neighborhood || !city || !region || !zipcode || !cellphone || !telephoneNumber) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return false;
+    }
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Por favor, insira um email válido.');
+      return false;
+    }
+  
+    const zipCodeRegex = /^\d{5}-?\d{3}$/;
+    if (!zipCodeRegex.test(zipcode)) {
+      alert('Por favor, insira um CEP válido (formato: XXXXX-XXX).');
+      return false;
+    }
+  
+    return true;
+  }
+
+// EDIT PROFILE MODAL
+btnEditModal.onclick = async function(event) {
+    event.preventDefault();
+
+    if (userId) {
+        const userData = await getUserById(userId);
+        console.log('Edit modal click: ',userData);
+        if (userData) {
+            populateOccupations();
+            fillEditProfileModal(userData);
+        }
+    }
+    
     editModal.style.display = "block";
 }
 
@@ -48,6 +101,51 @@ window.onclick = function(event) {
     if (event.target === editModal) {
         editModal.style.display = "none";
     }
+}
+
+function populateOccupations() {
+  getAllOccupations().then((data) => {
+    const select = document.getElementById("edit-user-occupation");
+    data.forEach((occupation) => {
+      const option = document.createElement("option");
+      option.value = occupation.occupationId;
+      option.textContent = occupation.occupationDescription;
+      select.appendChild(option);
+    });
+  });
+}
+
+async function getAllOccupations() {
+const getAllOccupationsEndPoint = 'http://localhost:8080/occupation';
+
+return axios.get(getAllOccupationsEndPoint)
+    .then(response => {
+    if (response.status !== 200 && response.status !== 204) {
+        throw new Error('Erro ao buscar ocupações');
+    }
+    const data = response.data;
+    console.log(data);
+    return data;
+    })
+    .catch(error => {
+    console.error('Erro:', error.message);
+    });
+}
+
+function fillEditProfileModal(data) {
+    document.getElementById('new-email').value = data.email;
+    document.getElementById('new-password').value = data.password;
+    document.getElementById('edit-first-name').value = data.firstName;
+    document.getElementById('edit-last-name').value = data.lastName;
+    document.getElementById('edit-user-occupation').value = data.occupation.occupationId;
+    document.getElementById('edit-address').value = data.address;
+    document.getElementById('edit-neighborhood').value = data.neighborhood;
+    document.getElementById('edit-complement').value = data.complement;
+    document.getElementById('edit-city').value = data.city;
+    document.getElementById('edit-region').value = data.region;
+    document.getElementById('edit-zip-code').value = data.zipcode;
+    document.getElementById('edit-cellphone').value = data.cellphone;
+    document.getElementById('edit-telephone').value = data.telephoneNumber;
 }
 
 // USER RELATED FUNCTIONS
@@ -114,18 +212,75 @@ function fillUserProfile(data) {
     document.getElementById('telephoneNumber').innerHTML = `<span>Telefone:</span> ${data.telephoneNumber}`;
 }
 
-function fillEditProfileModal(data) {
-    document.getElementById('new-email').value = data.email;
-    document.getElementById('new-password').value = data.password;
-    document.getElementById('first-name').value = data.firstName;
-    document.getElementById('last-name').value = data.lastName;
-    document.getElementById('occupation').value = data.occupation.occupationId;
-    document.getElementById('address').value = data.address;
-    document.getElementById('neighborhood').value = data.neighborhood;
-    document.getElementById('complement').value = data.complement;
-    document.getElementById('city').value = data.city;
-    document.getElementById('region').value = data.region;
-    document.getElementById('zip-code').value = data.zipcode;
-    document.getElementById('cellphone').value = data.cellphone;
-    document.getElementById('number2').value = data.telephoneNumber;
-}
+function editCustomer() {
+    const editCustomerEndPoint = `http://localhost:8080/customer/${userId}`;
+    let customer = {
+      id: userId,
+      firstName: document.getElementById("edit-first-name").value,
+      lastName: document.getElementById("edit-last-name").value,
+      occupation: {
+        occupationId: document.getElementById("edit-user-occupation").value,
+      },
+      email: document.getElementById("new-email").value,
+      password: document.getElementById("confirm-new-password").value,
+      address: document.getElementById("edit-address").value,
+      neighborhood: document.getElementById("edit-neighborhood").value,
+      complement: document.getElementById("edit-complement").value,
+      city: document.getElementById("edit-city").value,
+      region: document.getElementById("edit-region").value,
+      zipcode: document.getElementById("edit-zip-code").value,
+      cellphone: document.getElementById("edit-cellphone").value,
+      telephoneNumber: document.getElementById("edit-telephone").value,
+    };
+
+    console.log(customer);
+
+    axios
+      .post(editCustomerEndPoint, customer)
+      .then(function (response) {
+        Swal.fire({
+          title: "Sucesso!",
+          text: "Edição realizada com sucesso!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      })
+      .catch(function (error) {
+        console.error("Houve um erro ao editar seu perfil", error);
+        Swal.fire({
+          title: "Erro!",
+          text: "Erro ao realizar a edição!",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+  }
+
+// Função de formatação de CEP, celular e telefone
+document.addEventListener("DOMContentLoaded", function() {
+    const zipCodeInput = document.getElementById('edit-zip-code');
+    const cellphoneInput = document.getElementById('edit-cellphone');
+    const phoneInput = document.getElementById('edit-telephone');
+  
+    function applyMask(input, mask) {
+      input.addEventListener('input', function(e) {
+          let value = e.target.value.replace(/\D/g, '');
+          e.target.value = value.replace(mask.regex, mask.format);
+      });
+    }
+  
+    applyMask(zipCodeInput, {
+      regex: /^(\d{5})(\d{1,3})$/,
+      format: '$1-$2'
+    });
+  
+    applyMask(cellphoneInput, {
+      regex: /^(\d{2})(\d{5})(\d{0,4})$/,
+      format: '($1) $2-$3'
+    });
+  
+    applyMask(phoneInput, {
+      regex: /^(\d{2})(\d{4})(\d{0,4})$/,
+      format: '($1) $2-$3'
+    });
+  });
