@@ -703,6 +703,16 @@ p, ul {
   margin: auto;
   padding: 2px;
 }
+.btn-model-delete{
+  padding: 9px 15px;
+  font-size: 20px;
+  border: none;
+  background-color: darkcyan;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 153px;
+}
 /* MODAL EDIT */
 .modal {
   display: none;
