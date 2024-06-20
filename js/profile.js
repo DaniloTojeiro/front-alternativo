@@ -17,36 +17,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     // DELETE PROFILE EVENT
     btnDeleteProfile.onclick = async function(event) {
         event.preventDefault();
-
         Swal.fire({
-            title: 'Tem certeza?',
-            text: "Você não poderá reverter isso!",
+            title: 'Tem certeza que deseja deletar o perfil?',
+            text: "Esta ação não pode ser desfeita!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim, deletar!',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: 'Sim, deletar!'
         }).then(async (result) => {
             if (result.isConfirmed) {
-                try {
-                    await deleteUserProfile(userId);
-                    Swal.fire({
-                        title: 'Deletado!',
-                        text: 'Perfil deletado com sucesso!',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        window.location.href = 'index.html';
-                    });
-                } catch (error) {
-                    Swal.fire({
-                        title: 'Erro!',
-                        text: 'Erro ao deletar o perfil: ' + error.message,
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    });
-                }
+                await deleteUserProfile(userId);
             }
         });
     }
@@ -90,16 +71,26 @@ async function getUserById(userId) {
 async function deleteUserProfile(userId) {
     const deleteUserProfileEndPoint = `http://localhost:8080/customer/delete/${userId}`;
 
-    try {
-        const response = await axios.delete(deleteUserProfileEndPoint);
-        if (response.status !== 200) {
-            console.error('Status de resposta não é 200:', response.status);
-            throw new Error('Erro ao deletar o perfil do usuário');
-        }
-    } catch (error) {
-        console.error('Erro ao realizar a requisição:', error.message);
-        throw new Error('Erro ao deletar o perfil do usuário');
-    }
+    axios.delete(deleteUserProfileEndPoint)
+        .then(() => {
+            Swal.fire({
+                title: 'Deletado!',
+                text: 'Perfil deletado com sucesso!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'index.html';
+            });
+        })
+        .catch((error) => {
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Erro ao deletar o perfil: ' + error.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            console.log('Erro ao deletar usuário', error);
+        });
 }
 
 function fillUserProfile(data) {
