@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitForm = async (formData) => {
     try {
       const response = await axios.post('http://localhost:8080/order-history/create-order', formData);
-      if (response.status === 201) {
+      if (response.status === 200) {
         const cardData = response.data;
         renderCard(cardData);
       } else {
@@ -244,12 +244,11 @@ function renderCard(cardData) {
 }
 
 function clearCards() {
-  const mainCards = document.getElementById('mainCards');
+  const mainCards = document.getElementById('main-cards');
   while (mainCards.firstChild) {
     mainCards.removeChild(mainCards.firstChild);
   }
 }
-
 
 // FILTER BAR SECTION
 function populateOccupations() {
