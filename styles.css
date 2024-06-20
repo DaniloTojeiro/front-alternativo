@@ -660,7 +660,8 @@ p, ul {
   margin: 0;
   font-size: 24px;
   color:#005f5f;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  text-align: center;
 }
 .profile-info p {
   margin: 5px 0;
